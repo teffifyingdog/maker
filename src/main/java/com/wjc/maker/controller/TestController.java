@@ -23,6 +23,7 @@ public class TestController implements TestApi {
     @PostMapping("/t2")
     @Override
     public long t2() {
+        System.out.println(1);
         return 1L;
     }
 
