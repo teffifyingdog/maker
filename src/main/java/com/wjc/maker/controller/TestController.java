@@ -24,6 +24,8 @@ public class TestController implements TestApi {
     @Override
     public long t2() {
         System.out.println(1);
+        System.out.println(2);
+        System.out.println(3);
         return 1L;
     }
 
