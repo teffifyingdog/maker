@@ -3,7 +3,7 @@ package com.wjc.maker.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@TableName("user")
+@TableName("event_batch")
 @Data
 public class Test {
     private Integer id;
