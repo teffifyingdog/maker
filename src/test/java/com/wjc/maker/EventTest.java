@@ -62,36 +62,6 @@ public class EventTest {
 
     @Test
     public void t1() {
-        String bizCode = bizCodes[(int) (Math.random() * bizCodes.length)];
-        String ou = ous[(int) (Math.random() * ous.length)];
-        String batchId = UUID.randomUUID().toString();
-        Date date = new Date();
-        eventBatchService.save(new EventBatch() {{
-            setBizCode(bizCode);
-            setOu(ou);
-            setBatchId(batchId);
-            setCreateTime(date);
-            setUpdateTime(date);
-        }});
-        String e1 = UUID.randomUUID().toString();
-        String e2 = UUID.randomUUID().toString();
-        eventService.saveBatch(new ArrayList<>() {{
-            add(new Event() {{
-                setBizCode(bizCode);
-                setOu(ou);
-                setCreateTime(date);
-                setUpdateTime(date);
-                setEventId(e1);
-                setBatchId(batchId);
-            }});
-            add(new Event() {{
-                setBizCode(bizCode);
-                setOu(ou);
-                setCreateTime(date);
-                setUpdateTime(date);
-                setEventId(e2);
-                setBatchId(batchId);
-            }});
-        }});
+
     }
 }
