@@ -73,11 +73,19 @@ public class JsonToSet {
                         .append(upperCaseFirst(key))
                         .append(LEFT).append(BIG_DECIMAL_PREFIX)
                         .append(new BigDecimal(obj.toString()))
-                        .append(QUOTE).append(RIGHT)
+                        .append(QUOTE).append(RIGHT).append(RIGHT)
                         .append(SEMICOLON)
                         .append(NEW_LINE);
             }else {
                 sb.append(getStringBuffer(obj,prefix,index+1));
+                sb.append(prefix).append(POINT)
+                        .append(SET)
+                        .append(upperCaseFirst(prefix + (index+1)))
+                        .append(LEFT)
+                        .append(prefix + (index+1))
+                        .append(RIGHT)
+                        .append(SEMICOLON)
+                        .append(NEW_LINE);
             }
         }
         return sb;
@@ -92,7 +100,6 @@ public class JsonToSet {
     }
 
     private static void a(String s) {
-
 
 
     }
