@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定一个Dao/Mapper接口-->
+<mapper namespace="com.wjc.maker.mapper.ClaimMapper">
+    <update id="updateByTraceId" parameterType="com.wjc.maker.entity.ClaimTraceRecordDO">
+        update ar_claim_trace_record
+        set gmt_modified = now(),
+        version = #{version} + 1
+        <if test="receiptId != null and receiptId != ''">
+            ,receipt_id = #{receiptId}
+        </if>
+        <if test="requestId != null and requestId != ''">
+            ,request_id = #{requestId}
+        </if>
+        <if test="amount != null and amount != ''">
+            ,amount = #{amount}
+        </if>
+        where trace_id = #{traceId} and version = #{version}
+    </update>
+    <select id="lockedByReceiptId" resultType="com.wjc.maker.entity.ClaimTraceRecordDO">
+        select * from ar_claim_trace_record where receipt_id = #{receiptId} for update
+    </select>
+</mapper>
